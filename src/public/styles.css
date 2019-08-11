@@ -8,7 +8,7 @@
 
 html, body {
 	height: 100%;
-	background: #1a2025;
+	background: #2F3136;
 }
 
 .main-container {
@@ -22,16 +22,16 @@ html, body {
 	width: 100%;
 	max-width: 700px;
 	padding: 30px;
-	background: #fff;
+	background: #36393F;
 	border-radius: 10px;
-	border: 1px solid #5f5f5f;
+	border: 1px solid #26292E;
 	box-shadow: 0 5px 10px -5px #000;
 	display: flex;
 	flex-direction: column;
 }
 
 .title {
-	color: #24292e;
+	color: #b6b6b6;
 }
 
 .button-primary {
@@ -41,50 +41,52 @@ html, body {
 	border-radius: 4px;
 	font-size: 16px;
 	color: #fff;
-	background: #4a92ff;
+	background: #474d57;
 }
 
 .text-area {
+	color: #b6b6b6;
 	width: 100%;
 	max-width: 550px;
-	border: 1px solid #aaaaaa;
+	border: 0;
 	border-radius: 5px;
 	padding: 0 20px;
 	height: 45px;
 	font-size: 16px;
-	background: #dddddd;
-	transition: ease-in-out, background-color 0.25s ease-in-out;
+	background-color: #484C52;
 }
 
 .text-area::placeholder {
-	color: #aaaaaa;
-}
-
-.text-area:focus {
-	background-color: #ffffff;
-}
-
-.text-area:focus::placeholder {
-	color: #ffffff;
-	transition-delay: 0.5s;
-	transition: ease-in-out, color 0.5s ease-in-out;
+	color: #858585;
 }
 
 .message-container {
 	height: 300px;
+	margin-top: 20px;
 	overflow-y: scroll;
+}
+
+.message-container::-webkit-scrollbar {
+	width: 10px;
+}
+
+.message-container::-webkit-scrollbar-track {
+	background: #484C52;
+	border-radius: 4px;
+}
+
+.message-container::-webkit-scrollbar-thumb {
+	background: #202225;
+	border-radius: 4px;
 }
 
 #message-list li {
 	padding: 5px 10px;
+	color: #b6b6b6;
 }
 
 #message-list li:nth-child(odd) {
-	background: #eeeeee;
-}
-
-#message-list {
-	margin-bottom: 40px
+	background: #3d4046;
 }
 
 .space {
