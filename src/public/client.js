@@ -45,7 +45,7 @@ $(() => {
 
 	function appendMessage(user, msg, className) {
 		const li = $('<li>', {
-			"class": 'message-item swing-in-bottom-fwd' + (className ? ' ' + className : ''),
+			"class": 'message-item swing-in-bottom-fwd',
 		});
 
 		const avatarInfo = $('<div>', {
@@ -63,7 +63,7 @@ $(() => {
 		});
 
 		const message = $('<p>', {
-			"class": 'message-item-text',
+			"class": 'message-item-text' + (className ? ' ' + className : ''),
 			text: msg,
 		});
 
