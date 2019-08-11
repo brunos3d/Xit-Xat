@@ -1,5 +1,7 @@
 $(() => {
 	var socket = io();
+	var focused = true;
+	var unreadMessages = 0;
 
 	$('form').submit(() => {
 		const textbox = $('#text-box');
@@ -29,5 +31,24 @@ $(() => {
 		}).text(msg));
 		var scrollbar = $('#scrollbar');
 		scrollbar.scrollTop(1e4);
+
+		if (!focused) {
+			if (unreadMessages++ == 0) {
+				document.title = msg;
+			}
+			else {
+				document.title = `(${unreadMessages}) Novas mensagens...`
+			}
+		}
 	}
+
+	$(window).focus(function () {
+		focused = true;
+		unreadMessages = 0;
+		document.title = 'Xit-Xat';
+	});
+
+	$(window).blur(function () {
+		focused = false;
+	});
 });
