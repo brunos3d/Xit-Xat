@@ -1,0 +1,98 @@
+* {
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+	height: 100%;
+	background: #ecf1f5;
+}
+
+.main-container {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.panel {
+	width: 100%;
+	max-width: 700px;
+	padding: 30px;
+	background: #fff;
+	border-radius: 10px;
+	border: 1px solid #5f5f5f;
+	box-shadow: 0 5px 10px -5px #000;
+	display: flex;
+	flex-direction: column;
+}
+
+.title {
+	color: #24292e;
+}
+
+.button-primary {
+	height: 45px;
+	padding: 10px 20px 10px 20px;
+	border: 4px;
+	border-radius: 4px;
+	font-size: 16px;
+	color: #fff;
+	background: #4a92ff;
+}
+
+.text-area {
+	width: 100%;
+	max-width: 550px;
+	border: 1px solid #aaaaaa;
+	border-radius: 5px;
+	padding: 0 20px;
+	height: 45px;
+	font-size: 16px;
+	background: #dddddd;
+	transition: ease-in-out, background-color 0.25s ease-in-out;
+}
+
+.text-area::placeholder {
+	color: #aaaaaa;
+}
+
+.text-area:focus {
+	background-color: #ffffff;
+}
+
+.text-area:focus::placeholder {
+	color: #ffffff;
+	transition-delay: 0.5s;
+	transition: ease-in-out, color 0.5s ease-in-out;
+}
+
+.message-container {
+	height: 300px;
+	overflow-y: scroll;
+}
+
+#message-list li {
+	padding: 5px 10px;
+}
+
+#message-list li:nth-child(odd) {
+	background: #eeeeee;
+}
+
+#message-list {
+	margin-bottom: 40px
+}
+
+.space {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.hover-anim:hover {
+	transform: translateY(-2px);
+	transition: all 0.2s;
+}

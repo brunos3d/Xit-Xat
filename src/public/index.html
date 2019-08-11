@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Xit-Xat</title>
+    <link rel="stylesheet" href="./styles.css">
+
+</head>
+
+<body>
+	<div class="main-container">
+		<div class="panel">
+			<h1 class="title">Bate-Papo UOL</h1>
+			<div class="message-container" id="scrollbar">
+				<ul id="message-list"></ul>
+			</div>
+			<div class="space">
+				<form action="">
+					<input class="text-area" id="text-box" placeholder="Digite sua mensagem" autocomplete="off" autofocus onblur="this.focus()"/>
+					<button class="button-primary hover-anim">Send</button>
+				</form>
+			</div>
+		</div>
+	</div>
+				
+		
+	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	
+	<script src="./client.js"></script>
+</body>
+
+</html>

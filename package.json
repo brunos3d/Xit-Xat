@@ -1,0 +1,12 @@
+{
+	"name": "xit-xat",
+	"version": "0.0.1",
+	"description": "Simples bate-papo utilizando WebSocket",
+	"dependencies": {
+		"express": "^4.15.2",
+		"socket.io": "^1.7.3"
+	},
+	"scripts": {
+		"start": "node ./src/server.js"
+	}
+}
