@@ -44,7 +44,7 @@ $(() => {
 
 		const avatarImage = $('<img>', {
 			"class": 'avatar-image',
-			src: `./static/${user.username.toLowerCase()}.png`,
+			src: `./static/${user.username.toLowerCase().replace(/\W|\d|\s/g, '')}.png`,
 		});
 
 		const avatarName = $('<p>', {
@@ -75,7 +75,7 @@ $(() => {
 				document.title = 'Xit-Xat - ' + msg;
 			}
 			else {
-				document.title = `Xit-Xat - (${unreadMessages}) Novas mensagens...`
+				document.title = `Xit - Xat - (${unreadMessages}) Novas mensagens...`
 			}
 		}
 	}

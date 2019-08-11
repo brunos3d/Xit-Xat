@@ -11,7 +11,11 @@ let connectedUsersCount = 0;
 const names = ['Tokio', 'Rio', 'Nairobi', 'Berlim', 'Palermo', 'Denver'];
 
 io.on('connection', (socket) => {
-	const username = names[connectedUsersCount++ % names.length];
+	let username = names[connectedUsersCount++ % names.length];
+	if (connectedUsersCount > names.length) {
+		username += ` (${connectedUsersCount - names.length})`;
+	}
+	console.log(username, connectedUsersCount);
 	const user = { username, id: socket.id };
 	connectedUsers[socket.id] = user;
 
