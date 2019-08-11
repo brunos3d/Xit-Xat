@@ -12,11 +12,19 @@ $(() => {
 		return false;
 	});
 
-	socket.on('chat message', (msg) => {
-		$('#message-list').append($('<li>', {
-			"class": 'swing-in-bottom-fwd'
-		}).text(msg));
-		var scrollbar = $("#scrollbar");
-		scrollbar.scrollTop(1e4);
+	socket.on('new user', (user) => {
+		appendMessage(`${user.username}, entrou na sala.`, 'font-bold-n-italic bounce-in-left');
 	});
+
+	socket.on('chat message', (msg) => {
+		appendMessage(msg);
+	});
+
+	function appendMessage(msg, className) {
+		$('#message-list').append($('<li>', {
+			"class": 'swing-in-bottom-fwd' + className ? ' ' + className : '',
+		}).text(msg));
+		var scrollbar = $('#scrollbar');
+		scrollbar.scrollTop(1e4);
+	}
 });

@@ -12,9 +12,11 @@ const names = ['Tokio', 'Rio', 'Nairóbi', 'Berlim', 'Moscou', 'Denver', 'Helsin
 
 io.on('connection', (socket) => {
 	const username = names[conectedUsersCount++ % names.length];
-	conectedUsers[socket.id] = { username, id: socket.id };
+	const user = { username, id: socket.id };
+	conectedUsers[socket.id] = user;
 
-	io.emit('chat message', `${username}, entrou na sala.`);
+	io.emit('new user', user);
+
 	socket.on('chat message', (msg) => {
 		io.emit('chat message', `(${conectedUsers[socket.id].username}): ${msg}`);
 	});

@@ -30,6 +30,19 @@ html, body {
 	flex-direction: column;
 }
 
+.font-bold-n-italic {
+	font-style: italic;
+	font-weight: bold;
+}
+
+.font-italic {
+	font-style: italic;
+}
+
+.font-bold {
+	font-weight: bold;
+}
+
 .title {
 	color: #b6b6b6;
 }
