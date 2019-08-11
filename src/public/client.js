@@ -44,7 +44,7 @@ $(() => {
 
 		const avatarImage = $('<img>', {
 			"class": 'avatar-image',
-			src: `./static/${user.username.toLowerCase().replace(/\W|\d|\s/g, '')}.png`,
+			src: `./static/${user.username.toLowerCase().replace(/(\W|\d)*/g, '')}.png`,
 		});
 
 		const avatarName = $('<p>', {
