@@ -31,11 +31,11 @@ $(() => {
 	});
 
 	socket.on('user connected', (user) => {
-		appendMessage(user, `${user.username}, entrou na sala.`, 'font-bold-n-italic bounce-in-left');
+		appendMessage(user, `${user.username}, entrou na sala.`, 'bounce-in-left', 'font-bold-n-italic');
 	});
 
 	socket.on('user disconnected', (user) => {
-		appendMessage(user, `${user.username}, saiu da sala.`, 'font-bold-n-italic bounce-in-left');
+		appendMessage(user, `${user.username}, saiu da sala.`, 'bounce-in-left', 'font-bold-n-italic');
 	});
 
 	socket.on('chat message', (data) => {
@@ -43,9 +43,9 @@ $(() => {
 		appendMessage(user, msg);
 	});
 
-	function appendMessage(user, msg, className) {
+	function appendMessage(user, msg, anim, style) {
 		const li = $('<li>', {
-			"class": 'message-item swing-in-bottom-fwd',
+			"class": 'message-item ' + (anim ? anim : 'swing-in-bottom-fwd'),
 		});
 
 		const avatarInfo = $('<div>', {
@@ -63,7 +63,7 @@ $(() => {
 		});
 
 		const message = $('<p>', {
-			"class": 'message-item-text' + (className ? ' ' + className : ''),
+			"class": 'message-item-text' + (style ? ' ' + style : ''),
 			text: msg,
 		});
 
