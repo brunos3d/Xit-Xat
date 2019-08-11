@@ -92,8 +92,8 @@ html, body {
 }
 
 .avatar-image {
-	width: 32px;
-	height: 32px;
+	width: 40px;
+	height: 40px;
 	border: 2px solid #5064b4;
 	border-radius: 50%;
 }
