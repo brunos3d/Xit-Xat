@@ -35,18 +35,19 @@ html, body {
 
 .button-primary {
 	height: 45px;
+	margin-left: 5px;
 	padding: 10px 20px 10px 20px;
 	border: 4px;
 	border-radius: 4px;
 	font-size: 16px;
 	color: #fff;
-	background: #474d57;
+	background: #455282;
 }
 
 .text-area {
 	color: #b6b6b6;
 	width: 100%;
-	max-width: 550px;
+	max-width: 570px;
 	border: 0;
 	border-radius: 5px;
 	padding: 0 20px;
