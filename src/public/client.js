@@ -5,6 +5,7 @@ $(() => {
 	let focused = true;
 	let currentUser = null;
 	let unreadMessages = 0;
+	let connectedUsersCount = 0;
 
 	$('form').submit(() => {
 		const textbox = $('#text-box');
@@ -24,8 +25,14 @@ $(() => {
 		currentUser = user;
 	});
 
-	socket.on('new user', (user) => {
+	socket.on('user connected', (user) => {
+		$('#top-title').text(`Bate-Papo (${connectedUsersCount++})`);
 		appendMessage(user, `${user.username}, entrou na sala.`, 'font-bold-n-italic bounce-in-left');
+	});
+
+	socket.on('user disconnected', (user) => {
+		$('#top-title').text(`Bate-Papo (${connectedUsersCount--})`);
+		appendMessage(user, `${user.username}, saiu da sala.`, 'font-bold-n-italic bounce-in-left');
 	});
 
 	socket.on('chat message', (data) => {
