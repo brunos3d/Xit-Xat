@@ -22,7 +22,7 @@ $(() => {
 
 	function appendMessage(msg, className) {
 		$('#message-list').append($('<li>', {
-			"class": 'swing-in-bottom-fwd' + className ? ' ' + className : '',
+			"class": 'swing-in-bottom-fwd' + (className ? ' ' + className : ''),
 		}).text(msg));
 		var scrollbar = $('#scrollbar');
 		scrollbar.scrollTop(1e4);
