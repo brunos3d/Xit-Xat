@@ -93,13 +93,21 @@ html, body {
 	border-radius: 4px;
 }
 
+/* 
+#message-list {
+}
+*/
+
 #message-list li {
+	width: 95%;
+	word-wrap: break-word;
 	padding: 5px 10px;
 	color: #b6b6b6;
 }
 
 #message-list li:nth-child(odd) {
 	background: #3d4046;
+	border-radius: 4px;
 }
 
 .space {
