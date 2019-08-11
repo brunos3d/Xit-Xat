@@ -2,6 +2,7 @@ $(() => {
 	var socket = io();
 	var focused = true;
 	var unreadMessages = 0;
+	var audio = new Audio('bubble.mp3');
 
 	$('form').submit(() => {
 		const textbox = $('#text-box');
@@ -33,11 +34,14 @@ $(() => {
 		scrollbar.scrollTop(1e4);
 
 		if (!focused) {
+			if (audio.paused) {
+				audio.play();
+			}
 			if (unreadMessages++ == 0) {
-				document.title = msg;
+				document.title = 'Xit-Xat - ' + msg;
 			}
 			else {
-				document.title = `(${unreadMessages}) Novas mensagens...`
+				document.title = `Xit-Xat - (${unreadMessages}) Novas mensagens...`
 			}
 		}
 	}
