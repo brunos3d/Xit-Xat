@@ -2,7 +2,6 @@
 	margin: 0;
 	padding: 0;
 	outline: 0;
-	box-sizing: border-box;
 	font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -28,19 +27,6 @@ html, body {
 	box-shadow: 0 5px 10px -5px #000;
 	display: flex;
 	flex-direction: column;
-}
-
-.font-bold-n-italic {
-	font-style: italic;
-	font-weight: bold;
-}
-
-.font-italic {
-	font-style: italic;
-}
-
-.font-bold {
-	font-weight: bold;
 }
 
 .title {
@@ -98,16 +84,41 @@ html, body {
 }
 */
 
-#message-list li {
-	width: 95%;
-	word-wrap: break-word;
-	padding: 5px 10px;
-	color: #b6b6b6;
+.avatar-info {
+	width: 100%;
+	height: 40px;
+	display: grid;
+	grid-template-columns: 0fr 1fr;
 }
 
-#message-list li:nth-child(odd) {
-	background: #3d4046;
+.avatar-image {
+	width: 32px;
+	height: 32px;
+	border: 2px solid #5064b4;
+	border-radius: 50%;
+}
+
+.avatar-name {
+	margin-left: 15px;
+	color: #8dce7d;
+	font-size: 18px;
+}
+
+.message-item-text {
+	margin-top: -15px;
+	margin-left: 50px;
+	color: #b6b6b6;
+	word-wrap: break-word;
+}
+
+.message-item {
+	width: 90%;
+	padding: 10px;
+}
+
+.message-item:nth-child(odd) {
 	border-radius: 4px;
+	background: #3d4046;
 }
 
 .space {

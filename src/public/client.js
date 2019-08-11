@@ -1,6 +1,7 @@
 $(() => {
 	var socket = io();
 	var focused = true;
+	var currentUser = null;
 	var unreadMessages = 0;
 	var audio = new Audio('bubble.mp3');
 
@@ -18,18 +19,50 @@ $(() => {
 		return false;
 	});
 
+	socket.on('set user', (user) => {
+		currentUser = user;
+	});
+
 	socket.on('new user', (user) => {
-		appendMessage(`${user.username}, entrou na sala.`, 'font-bold-n-italic bounce-in-left');
+		appendMessage(user, `${user.username}, entrou na sala.`, 'font-bold-n-italic bounce-in-left');
 	});
 
-	socket.on('chat message', (msg) => {
-		appendMessage(msg);
+	socket.on('chat message', (data) => {
+		const { user, msg } = data;
+		appendMessage(user, msg);
 	});
 
-	function appendMessage(msg, className) {
-		$('#message-list').append($('<li>', {
-			"class": 'swing-in-bottom-fwd' + (className ? ' ' + className : ''),
-		}).text(msg));
+	function appendMessage(user, msg, className) {
+		const li = $('<li>', {
+			"class": 'message-item swing-in-bottom-fwd' + (className ? ' ' + className : ''),
+		});
+
+		const avatarInfo = $('<div>', {
+			"class": 'avatar-info',
+		});
+
+		const avatarImage = $('<img>', {
+			"class": 'avatar-image',
+			src: `./static/${user.username.toLowerCase()}.png`,
+		});
+
+		const avatarName = $('<p>', {
+			"class": 'avatar-name',
+			text: user.username,
+		});
+
+		const message = $('<p>', {
+			"class": 'message-item-text',
+			text: msg,
+		});
+
+		avatarInfo.append(avatarImage);
+		avatarInfo.append(avatarName);
+		li.append(avatarInfo);
+		li.append(message);
+
+		$('#message-list').append(li);
+
 		var scrollbar = $('#scrollbar');
 		scrollbar.scrollTop(1e4);
 
