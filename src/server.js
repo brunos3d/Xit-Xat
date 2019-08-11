@@ -11,7 +11,6 @@ let connectedUsersCount = 0;
 const names = ['Tokio', 'Rio', 'Nairobi', 'Berlim', 'Palermo', 'Denver'];
 
 io.on('connection', (socket) => {
-
 	let username = names[connectedUsersCount++ % names.length];
 
 	if (connectedUsersCount > names.length) {
@@ -27,6 +26,8 @@ io.on('connection', (socket) => {
 
 	io.emit('user connected', user);
 
+	io.emit('update online users', connectedUsersCount);
+
 	io.emit('new user', user);
 
 	socket.on('chat message', msg => {
@@ -39,6 +40,8 @@ io.on('connection', (socket) => {
 		delete connectedUsers[socket.id];
 
 		io.emit('user disconnected', user);
+
+		io.emit('update online users', connectedUsersCount);
 	});
 });
 

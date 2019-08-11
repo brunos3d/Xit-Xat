@@ -25,13 +25,16 @@ $(() => {
 		currentUser = user;
 	});
 
+	socket.on('update online users', (count) => {
+		connectedUsersCount = count;
+		$('#top-title').text(`Bate-Papo (${count})`);
+	});
+
 	socket.on('user connected', (user) => {
-		$('#top-title').text(`Bate-Papo (${connectedUsersCount++})`);
 		appendMessage(user, `${user.username}, entrou na sala.`, 'font-bold-n-italic bounce-in-left');
 	});
 
 	socket.on('user disconnected', (user) => {
-		$('#top-title').text(`Bate-Papo (${connectedUsersCount--})`);
 		appendMessage(user, `${user.username}, saiu da sala.`, 'font-bold-n-italic bounce-in-left');
 	});
 
