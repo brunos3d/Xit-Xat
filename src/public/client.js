@@ -2,13 +2,16 @@ $(() => {
 	var socket = io();
 
 	$('form').submit(() => {
-		var msg = $('#text-box').val();
+		const textbox = $('#text-box');
+		const msg = textbox.val();
 
 		if (msg && msg != undefined && msg != null) {
 			socket.emit('chat message', msg);
 
-			$('#text-box').val('');
+			textbox.val('');
 		}
+
+		textbox.focus();
 		return false;
 	});
 
