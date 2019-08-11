@@ -1,15 +1,16 @@
 $(() => {
-	var socket = io();
-	var focused = true;
-	var currentUser = null;
-	var unreadMessages = 0;
-	var audio = new Audio('bubble.mp3');
+	const socket = io();
+	const audio = new Audio('bubble.mp3');
+
+	let focused = true;
+	let currentUser = null;
+	let unreadMessages = 0;
 
 	$('form').submit(() => {
 		const textbox = $('#text-box');
 		const msg = textbox.val();
 
-		if (msg && msg != undefined && msg != null) {
+		if (msg) {
 			socket.emit('chat message', msg);
 
 			textbox.val('');
@@ -63,7 +64,7 @@ $(() => {
 
 		$('#message-list').append(li);
 
-		var scrollbar = $('#scrollbar');
+		let scrollbar = $('#scrollbar');
 		scrollbar.scrollTop(1e4);
 
 		if (!focused) {

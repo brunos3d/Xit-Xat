@@ -6,8 +6,8 @@ const port = process.env.PORT || 5000;
 
 app.use(express.static(__dirname + '/public'));
 
-var connectedUsers = {};
-var connectedUsersCount = 0;
+let connectedUsers = {};
+let connectedUsersCount = 0;
 const names = ['Tokio', 'Rio', 'Nairobi', 'Berlim', 'Palermo', 'Denver'];
 
 io.on('connection', (socket) => {
