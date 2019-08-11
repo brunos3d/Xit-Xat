@@ -8,7 +8,7 @@
 
 html, body {
 	height: 100%;
-	background: #ecf1f5;
+	background: #1a2025;
 }
 
 .main-container {
@@ -90,9 +90,4 @@ html, body {
 .space {
 	width: 100%;
 	margin-top: 20px;
-}
-
-.hover-anim:hover {
-	transform: translateY(-2px);
-	transition: all 0.2s;
 }

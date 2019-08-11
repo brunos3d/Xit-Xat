@@ -2,18 +2,21 @@ $(() => {
 	var socket = io();
 
 	$('form').submit(() => {
-		socket.emit('chat message', $('#text-box').val());
+		var msg = $('#text-box').val();
 
-		$('#text-box').val('');
+		if (msg && msg != undefined && msg != null) {
+			socket.emit('chat message', msg);
 
+			$('#text-box').val('');
+		}
 		return false;
 	});
 
 	socket.on('chat message', (msg) => {
-		if (msg) {
-			$('#message-list').append($('<li>').text(msg));
-			var scrollbar = $("#scrollbar");
-			scrollbar.scrollTop(1e4);
-		}
+		$('#message-list').append($('<li>', {
+			"class": 'swing-in-bottom-fwd'
+		}).text(msg));
+		var scrollbar = $("#scrollbar");
+		scrollbar.scrollTop(1e4);
 	});
 });

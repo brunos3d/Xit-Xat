@@ -6,11 +6,17 @@ const port = process.env.PORT || 5000;
 
 app.use(express.static(__dirname + '/public'));
 
-io.on('connection', (socket) => {
-	io.emit('chat message', `${socket.id}, entrou na sala.`);
+var conectedUsers = {};
+var conectedUsersCount = 0;
+const names = ['Tokio', 'Rio', 'Nairóbi', 'Berlim', 'Moscou', 'Denver', 'Helsinque'];
 
+io.on('connection', (socket) => {
+	const username = names[conectedUsersCount++ % names.length];
+	conectedUsers[socket.id] = { username, id: socket.id };
+
+	io.emit('chat message', `${username}, entrou na sala.`);
 	socket.on('chat message', (msg) => {
-		io.emit('chat message', `(${socket.id}): ${msg}`);
+		io.emit('chat message', `(${conectedUsers[socket.id].username}): ${msg}`);
 	});
 });
 
