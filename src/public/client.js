@@ -62,15 +62,57 @@ $(() => {
 			text: user.username,
 		});
 
-		const message = $('<p>', {
-			"class": 'message-item-text' + (style ? ' ' + style : ''),
-			text: msg,
-		});
-
 		avatarInfo.append(avatarImage);
 		avatarInfo.append(avatarName);
+
 		li.append(avatarInfo);
-		li.append(message);
+		const urlsPattern = /\bhttps?:\/\/\S+/gi;
+		const urls = msg.match(urlsPattern);
+		// console.log(urls);
+
+		if (urls) {
+			const messageLinked = msg.replace(urlsPattern, (matched) => `<a class="message-item-link" href="${matched}" target="_blank">${matched}</a>`);
+			// console.log(messageLinked);
+			const message = `<p class="message-item-text${(style ? ' ' + style : '')}">${messageLinked}</p>`
+
+			li.append(message);
+
+			const ytb = urls.find(url => url.includes('youtu'));
+			// console.log(ytb);
+
+			if (ytb) {
+				function getId(url) {
+					var ytbUrlPattern = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+					var matches = url.match(ytbUrlPattern);
+
+					if (matches && matches[2].length == 11) {
+						return matches[2];
+					}
+					else {
+						return 'error';
+					}
+				}
+				const videoId = getId(ytb);
+				const video = $('<iframe>', {
+					"class": 'space',
+					title: 'YouTube video player',
+					type: 'text/html',
+					width: '560px',
+					height: '315px',
+					src: `https://www.youtube.com/embed/${videoId}`,
+					frameborder: '0',
+				});
+
+				li.append(video);
+			}
+		}
+		else {
+			const message = $('<p>', {
+				"class": 'message-item-text' + (style ? ' ' + style : ''),
+				text: msg,
+			});
+			li.append(message);
+		}
 
 		$('#message-list').append(li);
 
