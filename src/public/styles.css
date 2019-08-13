@@ -100,17 +100,6 @@ html, body {
 	font-size: 18px;
 }
 
-.message-item-text {
-	margin-top: -15px;
-	margin-left: 60px;
-	color: #b6b6b6;
-	word-wrap: break-word;
-}
-
-.message-item-link {
-	color: #00c3ff;
-}
-
 .message-item {
 	width: 90%;
 	padding: 10px;
@@ -121,9 +110,28 @@ html, body {
 	background: #3d4046;
 }
 
+.message-item-area {
+	margin-top: -15px;
+	margin-left: 60px;
+}
+
+.message-item-text {
+	margin: 0;
+	color: #b6b6b6;
+	word-wrap: break-word;
+}
+
+.message-item-link {
+	color: #00c3ff;
+}
+
 .font-bold-n-italic {
 	font-weight: bold;
 	font-style: italic;
+}
+
+.youtube-view {
+	margin-top: 15px;
 }
 
 .space {

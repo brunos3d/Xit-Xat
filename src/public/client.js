@@ -52,6 +52,10 @@ $(() => {
 			"class": 'avatar-info',
 		});
 
+		const messageArea = $('<div>', {
+			"class": 'message-item-area',
+		});
+
 		const avatarImage = $('<img>', {
 			"class": 'avatar-image',
 			src: `./static/${user.username.toLowerCase().replace(/(\W|\d)*/g, '')}.png`,
@@ -66,6 +70,7 @@ $(() => {
 		avatarInfo.append(avatarName);
 
 		li.append(avatarInfo);
+
 		const urlsPattern = /\bhttps?:\/\/\S+/gi;
 		const urls = msg.match(urlsPattern);
 		// console.log(urls);
@@ -88,7 +93,7 @@ $(() => {
 			// console.log(hyperlinkedMessage);
 			message.append(hyperlinkedMessage);
 
-			li.append(message);
+			messageArea.append(message);
 
 			const ytb = urls.find(url => url.includes('youtu'));
 			// console.log(ytb);
@@ -110,7 +115,7 @@ $(() => {
 
 				if (videoId) {
 					const video = $('<iframe>', {
-						"class": 'space',
+						"class": 'youtube-view',
 						title: 'YouTube video player',
 						type: 'text/html',
 						width: '560px',
@@ -118,7 +123,9 @@ $(() => {
 						src: `https://www.youtube.com/embed/${videoId}`,
 						frameborder: '0',
 					});
-					li.append(video);
+
+					// Add youtube video to message area 
+					messageArea.append(video);
 				}
 			}
 		}
@@ -127,8 +134,10 @@ $(() => {
 				"class": 'message-item-text' + (style ? ' ' + style : ''),
 				text: msg,
 			});
-			li.append(message);
+			messageArea.append(message);
 		}
+
+		li.append(messageArea);
 
 		$('#message-list').append(li);
 
