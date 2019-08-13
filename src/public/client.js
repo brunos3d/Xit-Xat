@@ -89,21 +89,24 @@ $(() => {
 						return matches[2];
 					}
 					else {
-						return 'error';
+						return undefined;
 					}
 				}
 				const videoId = getId(ytb);
-				const video = $('<iframe>', {
-					"class": 'space',
-					title: 'YouTube video player',
-					type: 'text/html',
-					width: '560px',
-					height: '315px',
-					src: `https://www.youtube.com/embed/${videoId}`,
-					frameborder: '0',
-				});
+				// console.log(videoId);
 
-				li.append(video);
+				if (videoId) {
+					const video = $('<iframe>', {
+						"class": 'space',
+						title: 'YouTube video player',
+						type: 'text/html',
+						width: '560px',
+						height: '315px',
+						src: `https://www.youtube.com/embed/${videoId}`,
+						frameborder: '0',
+					});
+					li.append(video);
+				}
 			}
 		}
 		else {
