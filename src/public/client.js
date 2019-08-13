@@ -71,9 +71,22 @@ $(() => {
 		// console.log(urls);
 
 		if (urls) {
-			const messageLinked = msg.replace(urlsPattern, (matched) => `<a class="message-item-link" href="${matched}" target="_blank">${matched}</a>`);
-			// console.log(messageLinked);
-			const message = `<p class="message-item-text${(style ? ' ' + style : '')}">${messageLinked}</p>`
+			const message = $('<p>', {
+				"class": 'message-item-text' + (style ? ' ' + style : ''),
+			});
+			// replace urls in msg text with a href tags 
+			const hyperlinkedMessage = msg.replace(urlsPattern, (matched) => {
+				const href = $('<a>', {
+					"class": 'message-item-link' + (style ? ' ' + style : ''),
+					href: matched,
+					text: matched,
+					target: '_blank',
+				})
+				return href.prop('outerHTML');
+			});
+
+			// console.log(hyperlinkedMessage);
+			message.append(hyperlinkedMessage);
 
 			li.append(message);
 
