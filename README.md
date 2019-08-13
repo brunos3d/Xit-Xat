@@ -1,5 +1,4 @@
 # Xit-Xat
----
 Back e Front de uma sala de Bate-Papo que segue o design do Discord utilizando WebSocket. 
 
   https://xit-xat.herokuapp.com/
@@ -13,6 +12,7 @@ Back e Front de uma sala de Bate-Papo que segue o design do Discord utilizando W
 * Aviso de login/logout de usuários.
 
 ## Evolução / Demonstração
+---
 
 ![image 4](./images/image04.png)
 
