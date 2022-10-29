@@ -4,7 +4,7 @@
 	"description": "Simples bate-papo utilizando WebSocket",
 	"dependencies": {
 		"express": "^4.15.2",
-		"socket.io": "^1.7.3"
+		"socket.io": "^4.5.3"
 	},
 	"scripts": {
 		"start": "node ./src/server.js"
